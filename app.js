@@ -137,7 +137,7 @@ $(document).ready(function () {
         $("#user-form").hide();
       }
     } else if (findUser(username)) {
-      $("#username").val("");
+      
       confirm("This user already exists!");
     }
   });
