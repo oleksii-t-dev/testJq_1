@@ -5,7 +5,7 @@ $(document).ready(function () {
       username: "alex",
       email: "alex@gmail.com",
       role: "admin",
-      created_at: "2024-08-01",
+      created_at: "2024-08-20",
     },
     {
       id: 2,
@@ -37,6 +37,24 @@ $(document).ready(function () {
     },
   ];
 
+  let sortOrder = "asc";
+
+  function sortUsers() {
+    usersDatabase.sort(function (a, b) {
+      let nameA = a.username.toLowerCase();
+      let nameB = b.username.toLowerCase();
+
+      if (sortOrder === "asc") {
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+      } else {
+        if (nameA > nameB) return -1;
+        if (nameA < nameB) return 1;
+      }
+      return 0;
+    });
+  }
+
   let table = $("#user-table");
   function checkTableData() {
     let hasData = false;
@@ -56,7 +74,7 @@ $(document).ready(function () {
 
   function loadUsers() {
     $("#user-table tbody").empty();
-
+    sortUsers();
     usersDatabase.forEach(function (user) {
       let row =
         '<tr class="border p-4" data-id="' +
@@ -137,7 +155,6 @@ $(document).ready(function () {
         $("#user-form").hide();
       }
     } else if (findUser(username)) {
-      
       confirm("This user already exists!");
     }
   });
