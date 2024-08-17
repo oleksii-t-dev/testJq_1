@@ -5,7 +5,7 @@ $(document).ready(function () {
       username: "alex",
       email: "alex@gmail.com",
       role: "admin",
-      created_at: "2024-08-20",
+      created_at: "2024-08-02",
     },
     {
       id: 2,
